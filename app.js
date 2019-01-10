@@ -15,7 +15,7 @@ require('./auth/auth');
 app.use(bodyParser.urlencoded({ extended : false }) );
 //ket noi den module routes
 const routes = require('./routes/routes');
-const secureRoute = require('./routes/secure-routes');
+//const secureRoute = require('./routes/secure-routes');
 
 app.use('/', routes);
 //We plugin our jwt strategy as a middleware so only verified users can access this route

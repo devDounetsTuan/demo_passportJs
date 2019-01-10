@@ -17,7 +17,6 @@ passport.use('signup', new localStrategy({
                 email,
                 password
             });
-            top_secret
             //Send the user infomation to the next middleware
             return done(null, user);
         } catch (error) {
