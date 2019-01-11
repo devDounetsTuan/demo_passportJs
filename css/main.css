@@ -1,0 +1,25 @@
+.container{
+    width: 15%;
+    margin-left: 200px;
+    margin-top: 50px;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+}
+
+.container tr {
+    padding-top: 30px;
+}
+
+.container tr button {
+    padding-left: 10px;
+}
+button{
+   background-color: brown;
+   color: white;
+}
+
+td{
+    width: 10%;
+}
