@@ -17,6 +17,14 @@ app.use(bodyParser.urlencoded({ extended : false }) );
 const routes = require('./routes/routes');
 //const secureRoute = require('./routes/secure-routes');
 
+app.get("/name", function(req, res) {
+  var firstName = req.query.first;
+  var lastName = req.query.last;
+  var jsonObj = {name: 'firstName lastName'};
+  res.send(jsonObj);
+});
+
+
 app.use('/', routes);
 //We plugin our jwt strategy as a middleware so only verified users can access this route
 //app.use('/user', passport.authenticate('jwt', { session : false }), secureRoute );
@@ -26,6 +34,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.json({ error : err });
 });
+
 
 app.listen(3000, () => {
   console.log('Server started')

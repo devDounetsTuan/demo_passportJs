@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Auth</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <div class="form_login">
+
+    <form method="post" action="/login">
+      <div class="container">
+        <h1>Auth Form</h1>
+        <table>
+          <tr>
+            <td>
+              <label for="email"><b>Email</b></label>
+              <input type="text" name="email" required>
+            </td>
+
+          </tr>
+          <tr>
+            <td>
+              <label for="psw"><b>Password</b></label>
+              <input type="password" name="psw" required>
+            </td>
+
+          </tr>
+          <tr>
+            <td>
+              <button type="submit" class="login">Login</button>
+              <!-- <button type="submit" class="regis">Regis</button> -->
+            </td>
+
+          </tr>
+
+        </table>
+
+      </div>
+
+    </form>
+  </div>
+  <div class="list_user_table">
+    <div class="container">
+      <table>
+        <thead>
+          <th>_id</th>
+          <th>email</th>
+          <th>pass</th>
+        </thead>
+        <tbody>
+          <% users.forEach(function(user) { %>
+          <tr>
+            <td>
+              <%= user._id %>
+            </td>
+            <td>
+              <%= user.email %>
+            </td>
+            <td>
+              <%= user.password %>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+
+</html>

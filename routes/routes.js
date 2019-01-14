@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
 const router = express.Router();
 
@@ -13,7 +14,6 @@ router.post('/signup', passport.authenticate('signup', {
         user: req.user
     });
 });
-
 router.post('/login', async (req, res, next) => {
     passport.authenticate('login', async (err, user, info) => {
         try {
@@ -31,7 +31,9 @@ router.post('/login', async (req, res, next) => {
                     _id: user._id,
                     email: user.email
                 };
-                const token = jwt.sign({user: body}, 'top_secret');
+                const token = jwt.sign({
+                    user: body
+                }, 'top_secret');
                 return res.json({
                     token
                 });
@@ -42,4 +44,18 @@ router.post('/login', async (req, res, next) => {
 
     })(req, res, next);
 });
+
+
+
+
+
+const User = mongoose.model('user');
+router.get('/list', async (req, res, next) => {
+    User.find().then((users) => {
+      res.render('pages/index',{'users' : users});
+    }).catch(() => {
+        res.send('Sorry! Something went wrong')
+    })
+})
+
 module.exports = router;
